@@ -9,5 +9,12 @@ java {
 }
 
 dependencies {
+    def retrofit2Version = "2.9.0"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation "javax.inject:javax.inject:1"
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2Version"
 }
