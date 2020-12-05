@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Movie Viewer</string>
+    <string name="app_name">Movix</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_favorite">Favorite</string>
+    <string name="text_all">All</string>
+    <string name="text_favorites">Favorites</string>
+    <string name="empty_state">Empty state</string>
+    <string name="text_empty_state">Oops! Nothing to see here</string>
+    <string name="Released" >Release date:</string>
+    <string name="text_number_of_votes">No. of votes:</string>
 </resources>
