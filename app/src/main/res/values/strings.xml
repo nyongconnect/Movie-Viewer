@@ -9,4 +9,6 @@
     <string name="text_empty_state">Oops! Nothing to see here</string>
     <string name="Released" >Release date:</string>
     <string name="text_number_of_votes">No. of votes:</string>
+    <string name="all_favorites">All/Favorites</string>
+    <string name="toggle_view">Toggle view</string>
 </resources>

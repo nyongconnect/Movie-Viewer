@@ -2,6 +2,7 @@ package com.nyongnsikak.movieviewer.ui.movie
 
 import android.os.Bundle
 import android.view.*
+import android.widget.CompoundButton
 import androidx.lifecycle.Observer
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -22,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_movie_list.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MovieListFragment: BaseFragment() {
+class MovieListFragment: BaseFragment(), CompoundButton.OnCheckedChangeListener {
 
 
     @Inject
@@ -36,7 +37,6 @@ class MovieListFragment: BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -52,6 +52,7 @@ class MovieListFragment: BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.switchMaterial.setOnCheckedChangeListener(this)
         setUpMovieAdapter()
         viewModel.setColumn(preferenceHelper.isLinear)
         initRecyclerView()
@@ -94,14 +95,6 @@ class MovieListFragment: BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.action_all_movies -> {
-                displayAllMovies()
-                return true
-            }
-            R.id.action_favorite_movies ->{
-                displayFavoriteMovies()
-                return true
-            }
             R.id.toggle ->{
                 preferenceHelper.isLinear = !preferenceHelper.isLinear
                 viewModel.setColumn(preferenceHelper.isLinear)
@@ -130,6 +123,7 @@ class MovieListFragment: BaseFragment() {
         tv_empty_state.visibility = View.INVISIBLE
         rv_movie_list.visibility = View.VISIBLE
     }
+
 
     override fun observeData() {
 
@@ -191,6 +185,13 @@ class MovieListFragment: BaseFragment() {
     companion object{
         const val MENU_CODE_ALL_MOVIES = 0
         const val MENU_CODE_FAVORITE = 1
+    }
+
+    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+        if (isChecked){
+            displayFavoriteMovies()
+        }else  displayAllMovies()
+
     }
 
 }
